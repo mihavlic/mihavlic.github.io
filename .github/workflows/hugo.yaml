@@ -1,0 +1,97 @@
+# Sample workflow for building and deploying a Hugo site to GitHub Pages
+name: Deploy Hugo site to Pages
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches:
+      - main
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+# Default to bash
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  # Build job
+  build:
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.111.3
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Download hugo
+        run: |
+          set -e
+          wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb -O hugo.deb
+          sudo dpkg -i hugo.deb
+
+      - name: Download misc dependencies
+        run: sudo apt-get install libatk1.0-0 libgtk-3-dev
+
+      # Ubuntu doesn't actually have a package for this
+      - name: Checkout vulkan headers
+        run: |
+          git clone https://github.com/KhronosGroup/Vulkan-Headers.git --depth 1 --single-branch
+          echo CPLUS_INCLUDE_PATH=$(pwd)/Vulkan-Headers/include >> $GITHUB_ENV
+
+      - name: Get repo hash
+        # https://stackoverflow.com/a/57969570
+        run: |
+          echo "REPO_HEAD_HASH=$(git ls-remote "https://github.com/mihavlic/function-renderer.git" | grep HEAD | sed "s/^/REPO_HASH /g")" >> $GITHUB_ENV
+
+      - name: Cache rustdoc
+        id: cache-rustdoc
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-rustdoc
+        with:
+          path: |
+            function-renderer
+            ~/.cargo
+          key: ${{ env.REPO_HEAD_HASH }}
+          restore-keys: REPO_HASH
+      - if: ${{ steps.cache-rustdoc.outputs.cache-hit != 'true' }}
+        name: Clone repo and run rustdoc
+        run: |
+          git clone https://github.com/eesazahed/function-renderer.git --depth 1 --single-branch
+          cd function-renderer
+          cargo doc --no-deps
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v3
+        
+      - name: Build with Hugo
+        env:
+          HUGO_ENVIRONMENT: production
+          HUGO_ENV: production
+        run: |
+          mkdir static/rustdoc
+          cp -r function-renderer/target/doc/* static/rustdoc/
+          hugo \
+            --gc \
+            --minify \
+            --baseURL "${{ steps.pages.outputs.base_url }}/"
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: public

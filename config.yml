@@ -1,5 +1,17 @@
-baseURL: http://example.org/
+baseURL: https://mihavlic.github.io/
 languageCode: en-us
-title: My New Hugo Site
+title: Function viewer
 theme: hugo-book
 
+params:
+  BookTheme: dark
+  BookServiceWorker: true
+  BookSearch: true
+  BookServiceWorker: true
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  tableOfContents:
+    startLevel: 1
