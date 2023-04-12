@@ -6,14 +6,14 @@ title: "Introduction"
 
 # Introduction
 
-This project implements the [dual contouring](https://www.cs.rice.edu/~jwarren/papers/dualcontour.pdf) algorithm to extract triangle meshes from closed-form implicit surfaces and provides a nice Gui to manipulate and save the resulting model.
+This project implements the [dual contouring](https://www.cs.rice.edu/~jwarren/papers/dualcontour.pdf) algorithm in compute shaders to create triangle meshes of implicit surfaces, it also provides a nice Gui to manipulate and export the resulting model.
 
 An implicit surface is a function {{< katex >}}f(x, y, z){{< /katex >}}, where {{< katex >}}x{{< /katex >}}, {{< katex >}}y{{< /katex >}}, and {{< katex >}}z{{< /katex >}} represent a position in 3D space. By convention, if {{< katex >}}f(x, y, z){{< /katex >}} < 0, then that position is inside the shape; if it’s > 0, then that position is outside the shape; otherwise, it’s on the boundary of the shape.
 
 ![The application in use](/example.png)
 
 # Building
-You need recent graphics drivers (not hardware), Vulkan headers, rust, and a C++ compiler.
+You need recent graphics drivers (not hardware), Vulkan headers, Rust, and a C++ compiler.
 
 ## Archlinux
 1. `sudo pacman -S vulkan-headers rust base-devel`
