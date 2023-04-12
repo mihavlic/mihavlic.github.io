@@ -1,4 +1,4 @@
 ---
 type: docs
-bookHref: /docs/intro
+bookHref: /intro
 ---

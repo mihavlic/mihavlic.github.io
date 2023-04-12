@@ -8,6 +8,7 @@ params:
   BookServiceWorker: true
   BookSearch: true
   BookServiceWorker: true
+  BookSection: '*'
 
 markup:
   goldmark:
