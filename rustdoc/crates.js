@@ -1,1 +1,1 @@
-window.ALL_CRATES = ["fizzbuzz_rust"];
+window.ALL_CRATES = ["function_renderer"];

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":[["custom_window_frame",""],["handle_resize_borders",""],["handle_titlebar_interaction","Show some close/maximize/minimize buttons for the native window."],["title_bar_ui",""]]};

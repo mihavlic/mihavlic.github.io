@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":[["DENSITY_FUNCTION_MAGIC",""],["GRADIENT_FUNCTION_MAGIC",""]],"enum":[["AsyncEvent",""],["PollResult",""],["ShaderModulesConfig",""]],"fn":[["rust_target_dir",""],["send_fun",""]],"struct":[["DensityFunctionData",""],["MetaModuleEntry",""],["ModuleEntry",""],["ShaderModules",""],["SimpleFileEntry",""]]};

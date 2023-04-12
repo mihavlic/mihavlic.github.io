@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":[["MAX_MARGIN",""],["MIN_MARGIN",""]],"fn":[["math_into_glsl",""]],"struct":[["GlslCompiler",""]]};

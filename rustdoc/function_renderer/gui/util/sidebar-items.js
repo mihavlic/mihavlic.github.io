@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":[["DESCRIPTOR_SET_SIZES",""]],"struct":[["EguiDescriptorSetAllocator",""]]};

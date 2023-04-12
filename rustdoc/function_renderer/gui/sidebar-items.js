@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":[["set_fonts",""]],"mod":[["decorations",""],["icons",""],["renderer",""],["state",""],["util",""]],"struct":[["GuiFrameOutput",""],["InnerWindowState",""],["MouseState",""],["WindowState",""]],"type":[["WinitEvent",""]]};

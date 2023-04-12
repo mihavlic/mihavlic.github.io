@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":[["INDEX_BUFFER_BYTES",""],["INDEX_BUFFER_COUNT",""],["VERTEX_BUFFER_BYTES",""],["VERTEX_BUFFER_COUNT",""]],"struct":[["PaintConfig",""],["PushConstants",""],["Renderer",""],["RendererConfig",""],["TextureImage",""]]};
