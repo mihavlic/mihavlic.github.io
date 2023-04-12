@@ -12,7 +12,9 @@ on:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 # However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
@@ -71,7 +73,7 @@ jobs:
         run: |
           git clone https://github.com/mihavlic/function-renderer.git --depth 1 --single-branch
           cd function-renderer
-          cargo doc --no-deps
+          cargo doc
 
       - name: Setup Pages
         id: pages
@@ -82,12 +84,12 @@ jobs:
           HUGO_ENVIRONMENT: production
           HUGO_ENV: production
         run: |
-          mkdir public/rustdoc
-          cp -r function-renderer/target/doc/* public/rustdoc/
           hugo \
             --gc \
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
+          mkdir public/rustdoc
+          cp -r function-renderer/target/doc/* public/rustdoc/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
