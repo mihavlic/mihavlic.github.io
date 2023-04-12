@@ -1,10 +1,10 @@
 ---
 weight: 1
 bookFlatSection: true
-title: "Introduction"
+title: "Overview"
 ---
 
-# Introduction
+# Overview
 
 This project implements the [dual contouring](https://www.cs.rice.edu/~jwarren/papers/dualcontour.pdf) algorithm in compute shaders to create triangle meshes of implicit surfaces, it also provides a nice Gui to manipulate and export the resulting model.
 
@@ -26,3 +26,6 @@ You need recent graphics drivers (not hardware), Vulkan headers, Rust, and a C++
 2. somehow get MSVC, probably through the [SDK](https://developer.microsoft.com/en-us/windows/downloads/windows-sdk/)
 4. `git clone https://github.com/mihavlic/function-renderer && cd function-renderer`
 5. `cargo run`
+
+# Prebuilt binaries
+TODO
