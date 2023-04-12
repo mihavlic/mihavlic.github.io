@@ -71,7 +71,7 @@ jobs:
       - if: ${{ steps.cache-rustdoc.outputs.cache-hit != 'true' }}
         name: Clone repo and run rustdoc
         run: |
-          git clone https://github.com/eesazahed/function-renderer.git --depth 1 --single-branch
+          git clone https://github.com/mihavlic/function-renderer.git --depth 1 --single-branch
           cd function-renderer
           cargo doc --no-deps
 
