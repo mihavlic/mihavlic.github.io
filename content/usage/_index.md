@@ -4,7 +4,11 @@ bookFlatSection: true
 title: "Usage (Czech)"
 ---
 
-# Použítí
+| Jméno žáka:       | Michal Havlíček                  |
+|-------------------|----------------------------------|
+| Název práce:      | Vykreslování implicitních funkcí |
+| Termín odevzdání: | 14. dubna 2023                   |
+| Jméno vedoucího:  | Vojtěch Horký                    |
 
 Výslednou aplikaci tvoří pouze jeden soubor, po kompilaci ho je možné libovolně přesouvat.
 
@@ -22,4 +26,3 @@ Stisknutím levého tlačítka myši můžeme otáčet funkcí, kolečkem lze p�
 - __funkce__ -- políčko pro zadávání samotné funkce
 - __historie__ -- šipky pro navigaci mezi předešlými funkcemi, při spuštění obsahuje jisté zajímavé funkce
 - __ukončení__ -- zavře aplikaci
-
