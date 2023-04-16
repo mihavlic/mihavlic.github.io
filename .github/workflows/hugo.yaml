@@ -43,15 +43,11 @@ jobs:
           wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb -O hugo.deb
           sudo dpkg -i hugo.deb
 
-      - name: Checkout vulkan headers
-        run: |
-          git clone https://github.com/KhronosGroup/Vulkan-Headers.git --depth 1 --single-branch
-          echo CPLUS_INCLUDE_PATH=$(pwd)/Vulkan-Headers/include >> $GITHUB_ENV
-
       - name: Get repo hash
         # https://stackoverflow.com/a/57969570
         run: |
-          echo "REPO_HEAD_HASH=$(git ls-remote "https://github.com/mihavlic/function-renderer.git" | grep HEAD | sed "s/^/REPO_HASH /g")" >> $GITHUB_ENV
+          REPO_HEAD_HASH=$(git ls-remote "https://github.com/mihavlic/function-renderer.git" | grep HEAD | cut -f 1 | xargs printf 'REPO_HASH %s')
+          echo "REPO_HEAD_HASH=$REPO_HEAD_HASH" >> $GITHUB_ENV
 
       - name: Cache rustdoc
         id: cache-rustdoc
