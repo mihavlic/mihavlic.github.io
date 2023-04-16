@@ -6,26 +6,29 @@ title: "Overview"
 
 # Overview
 
-This project implements the [dual contouring](https://www.cs.rice.edu/~jwarren/papers/dualcontour.pdf) algorithm in compute shaders to create triangle meshes of implicit surfaces, it also provides a nice Gui to manipulate and export the resulting model.
+This is an implementation of the dual [dual contouring](https://www.cs.rice.edu/~jwarren/papers/dualcontour.pdf) in Vulkan compute shaders. It includes an Egui graphical interface for editing and viewing the function. It can also export .stl files.
 
-An implicit surface is a function {{< katex >}}f(x, y, z){{< /katex >}}, where {{< katex >}}x{{< /katex >}}, {{< katex >}}y{{< /katex >}}, and {{< katex >}}z{{< /katex >}} represent a position in 3D space. By convention, if {{< katex >}}f(x, y, z){{< /katex >}} < 0, then that position is inside the shape; if it’s > 0, then that position is outside the shape; otherwise, it’s on the boundary of the shape.
+An implicit surface is a function {{< katex >}}f(x, y, z){{< /katex >}}, where {{< katex >}}x, y, z{{< /katex >}} represent a position in 3D space. The function value determines the "density" of the position: negative is inside the shape, positive is outside the object, zero is on the boundary of the shape and it is what gets visualized.
 
-![The application in use](/example.png)
+![The application in use](/screenshot.png)
 
 # Building
-You need recent graphics drivers (not hardware), Vulkan headers, Rust, and a C++ compiler.
+Consider using the [release binaries](https://github.com/mihavlic/function-renderer/releases).
+
+You need recent graphics drivers, shaderc, Rust, and a C++ compiler.
 
 ## Archlinux
-1. `sudo pacman -S vulkan-headers rust base-devel`
-2. `git clone https://github.com/mihavlic/function-renderer && cd function-renderer`
-3. `cargo run`
+```fish
+sudo pacman -S shaderc rust gcc
+git clone https://github.com/mihavlic/function-renderer.git
+cd function-renderer
+cargo run
+```
 
 ## Windows
-1. download the [Lunarg SDK](https://vulkan.lunarg.com/)
-2. install [Rust](https://www.rust-lang.org/tools/install)
-2. somehow get MSVC, probably through the [SDK](https://developer.microsoft.com/en-us/windows/downloads/windows-sdk/)
-4. `git clone https://github.com/mihavlic/function-renderer && cd function-renderer`
-5. `cargo run`
-
-# Prebuilt binaries
-TODO
+Install the [Lunarg SDK](https://vulkan.lunarg.com/), [Rust](https://www.rust-lang.org/tools/install), and get MSVC from the [Windows SDK](https://developer.microsoft.com/en-us/windows/downloads/windows-sdk/), then run:
+```fish
+git clone https://github.com/mihavlic/function-renderer.git
+cd function-renderer
+cargo run
+```

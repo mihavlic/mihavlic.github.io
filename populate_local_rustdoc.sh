@@ -9,7 +9,7 @@ fi
 # build the documentation excluding some rather large packages
 cd $ROOT_DIR
 cargo doc
-cd -
+cd - > /dev/null
 
 mkdir -p static/rustdoc
 cp -ru $ROOT_DIR/target/doc/* static/rustdoc/
